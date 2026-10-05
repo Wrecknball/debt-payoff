@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class PayoffApp {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        
+        double[] aprs = new double[];
 
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
