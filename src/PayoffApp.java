@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class PayoffApp {
     public static void main(String[] args) {
-        // CreditCard usaa = new CreditCard("USAA CC", 15.1, 989.76);
+        CreditCard usaa = new CreditCard("USAA CC", 15.1, 989.76);
         // CreditCard nfcc = new CreditCard("Navy Federal CC", 18.3, 123.47);
         // usaa.setName("USAA Credit Card");
         // System.out.println(usaa);
@@ -18,8 +18,14 @@ public class PayoffApp {
         
         // Make an empty arraylist to hold aprs
         List<Double> aprs = new ArrayList<>();
+        List<CreditCard> cards = new ArrayList<>();
 
         // double[] aprs = new double[5];
+
+        System.out.println(usaa.getBalance());
+        usaa.accrueInterest();
+        System.out.println(usaa.monthlyInterest());
+        System.out.println(usaa.getBalance());
 
         while(scan.hasNextLine()) {
             String name = scan.nextLine();
@@ -34,19 +40,23 @@ public class PayoffApp {
             if(scan.hasNextLine()) scan.nextLine();
 
             CreditCard card = new CreditCard(name, apr, balance);
-            System.out.println(card);
+            // add the new card to our cards list
+
+            cards.add(card);
+
             // String aprString = String.format("%.2f%%", apr);
             // String balanceString = String.format("$%.2f", balance);
             // System.out.println(name + ": " + "APR: " + aprString + " Balance: " + balanceString);
-            System.out.println("");
+            // System.out.println("");
         }
-        System.out.println("Normal: " + aprs);
+        
+        Collections.sort(aprs, Comparator.reverseOrder());
+        System.out.println(aprs);
         System.out.println("");
+        Collections.sort(cards, Comparator.reverseOrder());
+        System.out.println(cards);
 
         // sort arraylist
-        Collections.sort(aprs, Comparator.reverseOrder());
-
         // print arraylist
-        System.out.println("Reversed: " + aprs);
     }
 }
